@@ -1,8 +1,7 @@
 import pytest
 from unittest.mock import patch
 import race
-#from arcade import key
-import arcade
+from arcade import key
 
 @pytest.fixture
 def game_setup():
@@ -74,4 +73,4 @@ def test_boundary_conditions(game):
 
     game.car_sprite.center_x = race.SCREEN_WIDTH + 10
     game.on_update(1)
-    assert self.game.car_sprite.center_x <= race.SCREEN_WIDTH, "Car should not go beyond right boundary"
+    assert game.car_sprite.center_x <= race.SCREEN_WIDTH, "Car should not go beyond right boundary"
