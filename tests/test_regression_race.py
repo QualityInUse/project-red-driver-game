@@ -1,11 +1,12 @@
 import pytest
-from unittest.mock import patch
-import race
-from arcade import key
+from mock import patch
+import race.race.Mygame as Mygame
+#from arcade import key
 
+@patch('race.arcade')
 @pytest.fixture
-def game_setup():
-   game = race.Mygame()
+def game():
+   game = Mygame()
    game.setup()
    return game
 
@@ -19,7 +20,7 @@ def test_initialization(game):
     assert game.fuel_left == 10, "Initial fuel should be 10"
 
 @patch('race.arcade')
-def test_user_input_handling(game, mock_arcade):
+def test_user_input_handling(game):
     """Test response to key presses."""
     game.on_key_press(key.LEFT, None)
     assert game.car_sprite.change_x == -6, "Car should move left on pressing LEFT key"
