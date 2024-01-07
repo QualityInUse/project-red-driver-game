@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: poetry install
       - name: Pyglet Info
-        run: poetry run python -m pyglet.info
+        run: sudo apt install -y libgl1 
       - name: Run regression tests
         run: poetry run pytest ./tests/race/test_regression_race.py
   
