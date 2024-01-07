@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: poetry install
       - name: Setup X11
-        run: export DISPLAY=localhost:0.0
+        run: sudo apt install xvfb
       - name: Run regression tests
         run: poetry run pytest ./tests/race/test_regression_race.py
   
